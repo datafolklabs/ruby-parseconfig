@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>import_config (ParseConfig)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/parseconfig.rb, line 54</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import_config</span>()
+    <span class="ruby-comment cmt"># The config is top down.. anything after a [group] gets added as part</span>
+    <span class="ruby-comment cmt"># of that group until a new [group] is found.  </span>
+    <span class="ruby-identifier">group</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">open</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">config_file</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip!</span>
+      <span class="ruby-keyword kw">unless</span> (<span class="ruby-regexp re">/^\#/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>))
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-regexp re">/\s*=\s*/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>))
+          <span class="ruby-identifier">param</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s*=\s*/</span>, <span class="ruby-value">2</span>)  
+          <span class="ruby-identifier">var_name</span> = <span class="ruby-node">&quot;#{param}&quot;</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">strip</span>
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">strip</span>
+          <span class="ruby-identifier">new_value</span> = <span class="ruby-value str">''</span>
+          <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">value</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^['&quot;](.*)['&quot;]$/</span>
+              <span class="ruby-identifier">new_value</span> = <span class="ruby-identifier">$1</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">new_value</span> = <span class="ruby-identifier">value</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">new_value</span> = <span class="ruby-value str">''</span>
+          <span class="ruby-keyword kw">end</span> 
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">group</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add_to_group</span>(<span class="ruby-identifier">group</span>, <span class="ruby-identifier">var_name</span>, <span class="ruby-identifier">new_value</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">var_name</span>, <span class="ruby-identifier">new_value</span>)
+          <span class="ruby-keyword kw">end</span>
+          
+        <span class="ruby-keyword kw">elsif</span>(<span class="ruby-regexp re">/^\[(.+)\]$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">!=</span> [])
+          <span class="ruby-identifier">group</span> = <span class="ruby-regexp re">/^\[(.+)\]$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>).<span class="ruby-identifier">to_a</span>[<span class="ruby-value">1</span>]
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">group</span>, {})
+          
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>   
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
