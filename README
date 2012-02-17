@@ -36,7 +36,7 @@ Allows ruby applications as well as Bash Init scripts to use the same config.
 
 The MIT License:
 
-Copyright (c) 2006 BJ Dierkes
+Copyright (c) 2006,2012 BJ Dierkes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

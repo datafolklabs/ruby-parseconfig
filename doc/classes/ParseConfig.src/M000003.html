@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/parseconfig.rb, line 54</span>
+  <pre><span class="ruby-comment cmt"># File lib/parseconfig.rb, line 52</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import_config</span>()
     <span class="ruby-comment cmt"># The config is top down.. anything after a [group] gets added as part</span>
     <span class="ruby-comment cmt"># of that group until a new [group] is found.  </span>
     <span class="ruby-identifier">group</span> = <span class="ruby-keyword kw">nil</span>
-    <span class="ruby-identifier">open</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">config_file</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">open</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">config_file</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip!</span>
       <span class="ruby-keyword kw">unless</span> (<span class="ruby-regexp re">/^\#/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>))
         <span class="ruby-keyword kw">if</span>(<span class="ruby-regexp re">/\s*=\s*/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>))

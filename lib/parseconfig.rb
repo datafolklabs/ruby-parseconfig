@@ -83,7 +83,7 @@ class ParseConfig
           
         end
       end
-    end   
+    end }
   end
 
   # This method will provide the value held by the object "@param"
@@ -93,6 +93,7 @@ class ParseConfig
   # DEPRECATED - will be removed in future versions
   #
   def get_value(param)
+    puts "ParseConfig Deprecation Warning: get_value() is deprecated."
     return self.params[param]
   end
 
@@ -104,27 +105,6 @@ class ParseConfig
   # List available sub-groups of the config.
   def get_groups()
     return self.groups
-  end
-  
-  # This method is simple.  Should you need to override a value 
-  # dynamically, use override_value(param, value) where 'param' is
-  # the name of the paramater in the config file.
-  #
-  # DEPRECATED - will be removed in future versions.
-  #
-  def override_value(param, value)
-    #self.instance_variable_set("@#{param}", value)
-    raise RuntimeError, "override_value() is deprecated as of 0.5.1"
-  end
-
-  # This method will set the value of '@param' to nil (not in the config
-  # file, only in the app).  
-  #
-  # DEPRECATED - will be removed in future versions.
-  #
-  def nil_value(param)
-    #self.instance_variable_set("@#{param}", nil)
-    raise RuntimeError, "nil_value() is deprecated as of 0.5.1"
   end
 
   # This method adds an element to the config object (not the config file)

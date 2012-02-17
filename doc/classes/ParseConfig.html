@@ -92,17 +92,15 @@ Note: A group is a set of parameters defined for a subpart of a config file
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000009">add</a>&nbsp;&nbsp;
-      <a href="#M000010">add_to_group</a>&nbsp;&nbsp;
+      <a href="#M000007">add</a>&nbsp;&nbsp;
+      <a href="#M000008">add_to_group</a>&nbsp;&nbsp;
       <a href="#M000006">get_groups</a>&nbsp;&nbsp;
       <a href="#M000005">get_params</a>&nbsp;&nbsp;
       <a href="#M000004">get_value</a>&nbsp;&nbsp;
       <a href="#M000003">import_config</a>&nbsp;&nbsp;
       <a href="#M000001">new</a>&nbsp;&nbsp;
-      <a href="#M000008">nil_value</a>&nbsp;&nbsp;
-      <a href="#M000007">override_value</a>&nbsp;&nbsp;
       <a href="#M000002">validate_config</a>&nbsp;&nbsp;
-      <a href="#M000011">write</a>&nbsp;&nbsp;
+      <a href="#M000009">write</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -122,7 +120,7 @@ Note: A group is a set of parameters defined for a subpart of a config file
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">Version</td>
           <td>=</td>
-          <td class="context-item-value">'0.5.2'</td>
+          <td class="context-item-value">'0.5.3'</td>
         </tr>
         </table>
       </div>
@@ -183,12 +181,12 @@ value&quot;
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="ParseConfig.src/M000009.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000009.html');return false;">
+          <a href="ParseConfig.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('ParseConfig.src/M000007.html');return false;">
           <span class="method-name">add</span><span class="method-args">(param_name, value)</span>
           </a>
         </div>
@@ -202,12 +200,12 @@ group
         </div>
       </div>
 
-      <div id="method-M000010" class="method-detail">
-        <a name="M000010"></a>
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
 
         <div class="method-heading">
-          <a href="ParseConfig.src/M000010.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000010.html');return false;">
+          <a href="ParseConfig.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('ParseConfig.src/M000008.html');return false;">
           <span class="method-name">add_to_group</span><span class="method-args">(group, param_name, value)</span>
           </a>
         </div>
@@ -293,49 +291,6 @@ Import data from the config to our config object.
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
-
-        <div class="method-heading">
-          <a href="ParseConfig.src/M000008.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000008.html');return false;">
-          <span class="method-name">nil_value</span><span class="method-args">(param)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-This method will set the value of &#8217;@param&#8217; to nil (not in the
-config file, only in the app).
-</p>
-<p>
-DEPRECATED - will be removed in future versions.
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
-
-        <div class="method-heading">
-          <a href="ParseConfig.src/M000007.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000007.html');return false;">
-          <span class="method-name">override_value</span><span class="method-args">(param, value)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-This method is simple. Should you need to override a value dynamically, use
-<a href="ParseConfig.html#M000007">override_value</a>(param, value) where
-&#8216;param&#8217; is the name of the paramater in the config file.
-</p>
-<p>
-DEPRECATED - will be removed in future versions.
-</p>
-        </div>
-      </div>
-
       <div id="method-M000002" class="method-detail">
         <a name="M000002"></a>
 
@@ -353,12 +308,12 @@ Validate the config file, and contents
         </div>
       </div>
 
-      <div id="method-M000011" class="method-detail">
-        <a name="M000011"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="ParseConfig.src/M000011.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000011.html');return false;">
+          <a href="ParseConfig.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('ParseConfig.src/M000009.html');return false;">
           <span class="method-name">write</span><span class="method-args">(output_stream=STDOUT)</span>
           </a>
         </div>

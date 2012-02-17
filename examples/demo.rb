@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require('rubygems')
-require('parseconfig')
-#require('./lib/parseconfig.rb')
+#require('parseconfig')
+require('../lib/parseconfig.rb')
 
 begin
 	c = ParseConfig.new('demo.conf')
@@ -45,14 +45,6 @@ puts "Using params hash..."
 puts '-' * 77
 puts
 puts "The admin email address is #{c.params['admin_email']}"
-puts 
-puts
-
-puts "Using get_value (kind of deprecated)..."
-puts '-' * 77
-puts
-puts "The listen address is #{c.get_value('listen_ip')} and the user name " + 
-     "is #{c.get_value('group1')['user_name']}"
 puts 
 puts
 
