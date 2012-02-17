@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
               "Changelog", 
               "LICENSE", 
               "doc",
-              "demo.rb",
-              "demo.conf",
+              "examples/demo.rb",
+              "examples/demo.conf",
               "lib/parseconfig.rb"]
   
 end
