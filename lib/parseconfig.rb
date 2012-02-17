@@ -1,9 +1,8 @@
-# $Id: parseconfig.rb 37 2008-02-29 07:27:33Z wdierkes $
 # 
 # Author::      BJ Dierkes <wdierkes@5dollarwhitebox.org> 
-# Copyright::   Copyright (c) 2006,2009 5dollarwhitebox.org 
+# Copyright::   Copyright (c) 2006,2012 BJ Dierkes
 # License::     MIT 
-# URL::         http://www.5dollarwhitebox.org
+# URL::         https://github.com/derks/ruby-parseconfig
 # 
 
 # This class was written to simplify the parsing of configuration
@@ -19,7 +18,7 @@
 
 class ParseConfig
   
-  Version = '0.5.2'
+  Version = '0.5.3'
 
   attr_accessor :config_file, :params, :groups
 
@@ -54,7 +53,7 @@ class ParseConfig
     # The config is top down.. anything after a [group] gets added as part
     # of that group until a new [group] is found.  
     group = nil
-    open(self.config_file).each do |line| 
+    open(self.config_file) { |f| f.each do |line|
       line.strip!
       unless (/^\#/.match(line))
         if(/\s*=\s*/.match(line))

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = %q{parseconfig}
-  s.version = "0.5.2"
-  s.date = %q{2010-02-27}
+  s.version = "0.5.3"
+  s.date = %q{2012-02-17}
   s.authors = ["BJ Dierkes"]
   s.email = %q{wdierkes@5dollarwhitebox.org}
   s.summary = %q{ParseConfig provides simple parsing of standard *nix style config files.}
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
               "Changelog", 
               "LICENSE", 
               "doc",
-              "demo.rb",
-              "demo.conf",
+              "examples/demo.rb",
+              "examples/demo.conf",
               "lib/parseconfig.rb"]
   
 end
