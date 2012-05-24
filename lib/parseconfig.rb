@@ -97,6 +97,11 @@ class ParseConfig
     return self.params[param]
   end
 
+  # This method is a shortcut to accessing the @params variable
+  def [](param)
+    return self.params[param]
+  end
+
   # This method returns all parameters/groups defined in a config file.
   def get_params()
     return self.params.keys
