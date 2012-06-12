@@ -4,6 +4,8 @@ Ruby ParseConfig Library
 ParseConfig provides simple parsing of standard configuration files in the 
 form of 'param = value'.  It also supports nested [group] sections.
 
+[![Continuous Integration Status](https://secure.travis-ci.org/derks/ruby-parseconfig.png)](http://travis-ci.org/derks/ruby-parseconfig)
+
 Installation
 ------------
 
