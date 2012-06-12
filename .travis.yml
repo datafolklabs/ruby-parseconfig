@@ -1,0 +1,7 @@
+language: ruby 
+script: ./utils/run-tests.sh
+install: sudo apt-get install rubygems-rspec 
+ruby:
+  - "1.8"
+  - "1.9"
+  - "2.0"
