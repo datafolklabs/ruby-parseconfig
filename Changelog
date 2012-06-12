@@ -1,3 +1,8 @@
+Tue Jun 12, 2012 - v1.0.0
+- Resolved Issue #3, Config files not closed properly.
+- Resolved Issue #7, Added basic rspec testing
+- Resolved Issue #5, Readded support for array like access
+
 Sat Feb 27, 2010 - v0.5.2
 - Re-releasing under MIT License.
 - Fixed issue with the add() method where if you added a group outside
