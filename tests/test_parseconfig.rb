@@ -19,6 +19,7 @@ describe 'ruby-parseconfig' do
 
       $result.keys.each do |k|
         c[k].should == $result[k]
+        c.get_value(k).should == $result[k]
       end
 
     end

@@ -18,7 +18,7 @@
 
 class ParseConfig
   
-  Version = '0.5.3'
+  Version = '1.0.2'
 
   attr_accessor :config_file, :params, :groups
 
@@ -92,10 +92,11 @@ class ParseConfig
   #
   # DEPRECATED - will be removed in future versions
   #
-  #def get_value(param)
-  #  puts "ParseConfig Deprecation Warning: get_value() is deprecated."
-  #  return self.params[param]
-  #end
+  def get_value(param)
+    puts "ParseConfig Deprecation Warning: get_value() is deprecated. Use " + \
+         "config['param'] or config['group']['param'] instead."
+    return self.params[param]
+  end
 
   # This method is a shortcut to accessing the @params variable
   def [](param)

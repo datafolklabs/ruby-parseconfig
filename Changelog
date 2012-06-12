@@ -1,3 +1,7 @@
+Tue Jun 12, 2012 - v1.0.2
+- Re-enable get_value() as it seems some projects are still using it.  
+  That said, get_value() *will* be removed in the future at some point.
+  
 Tue Jun 12, 2012 - v1.0.0
 - Resolved Issue #3, Config files not closed properly.
 - Resolved Issue #7, Added basic rspec testing
