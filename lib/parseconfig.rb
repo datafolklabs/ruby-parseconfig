@@ -1,5 +1,5 @@
 # 
-# Author::      BJ Dierkes <wdierkes@5dollarwhitebox.org> 
+# Author::      BJ Dierkes <derks@bjdierkes.com> 
 # Copyright::   Copyright (c) 2006,2012 BJ Dierkes
 # License::     MIT 
 # URL::         https://github.com/derks/ruby-parseconfig

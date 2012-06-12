@@ -92,11 +92,11 @@ Note: A group is a set of parameters defined for a subpart of a config file
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
+      <a href="#M000004">[]</a>&nbsp;&nbsp;
       <a href="#M000007">add</a>&nbsp;&nbsp;
       <a href="#M000008">add_to_group</a>&nbsp;&nbsp;
       <a href="#M000006">get_groups</a>&nbsp;&nbsp;
       <a href="#M000005">get_params</a>&nbsp;&nbsp;
-      <a href="#M000004">get_value</a>&nbsp;&nbsp;
       <a href="#M000003">import_config</a>&nbsp;&nbsp;
       <a href="#M000001">new</a>&nbsp;&nbsp;
       <a href="#M000002">validate_config</a>&nbsp;&nbsp;
@@ -181,6 +181,23 @@ value&quot;
 
       <h3 class="section-bar">Public Instance methods</h3>
 
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="ParseConfig.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('ParseConfig.src/M000004.html');return false;">
+          <span class="method-name">[]</span><span class="method-args">(param)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is a shortcut to accessing the @params variable
+</p>
+        </div>
+      </div>
+
       <div id="method-M000007" class="method-detail">
         <a name="M000007"></a>
 
@@ -248,28 +265,6 @@ List available sub-groups of the config.
         <div class="method-description">
           <p>
 This method returns all parameters/groups defined in a config file.
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000004" class="method-detail">
-        <a name="M000004"></a>
-
-        <div class="method-heading">
-          <a href="ParseConfig.src/M000004.html" target="Code" class="method-signature"
-            onclick="popupCode('ParseConfig.src/M000004.html');return false;">
-          <span class="method-name">get_value</span><span class="method-args">(param)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-This method will provide the value held by the object &quot;@param&quot;
-where &quot;@param&quot; is actually the name of the param in the config
-file.
-</p>
-<p>
-DEPRECATED - will be removed in future versions
 </p>
         </div>
       </div>
