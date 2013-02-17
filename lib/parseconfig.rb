@@ -41,7 +41,7 @@ class ParseConfig
   
   # Validate the config file, and contents
   def validate_config()  
-    if !File.readable?(self.config_file)
+    unless File.readable?(self.config_file)
       raise Errno::EACCES, "#{self.config_file} is not readable" 
     end
     
@@ -53,8 +53,13 @@ class ParseConfig
     # The config is top down.. anything after a [group] gets added as part
     # of that group until a new [group] is found.  
     group = nil
-    open(self.config_file) { |f| f.each do |line|
+    open(self.config_file) { |f| f.each_with_index do |line, i|
       line.strip!
+
+      if i.eql? 0 and line.include?("\xef\xbb\xbf".force_encoding("UTF-8"))
+        line.delete!("\xef\xbb\xbf".force_encoding("UTF-8"))
+      end
+
       unless (/^\#/.match(line))
         if(/\s*=\s*/.match(line))
           param, value = line.split(/\s*=\s*/, 2)  
