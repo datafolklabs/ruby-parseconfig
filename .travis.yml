@@ -1,13 +1,15 @@
-language: ruby 
+language: ruby
 script: ./utils/run-tests.sh
-install: sudo gem install rspec 
+install: sudo gem install rspec
 rvm:
   - 1.8.6
   - 1.8.7
   - 1.9.2
   - 1.9.3
+  - 2.0
   - jruby-18mode
   - jruby-19mode
+  - jruby-20mode
   - ruby-head
   - jruby-head
   - ree

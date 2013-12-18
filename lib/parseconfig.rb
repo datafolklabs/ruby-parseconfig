@@ -1,24 +1,24 @@
-# 
-# Author::      BJ Dierkes <derks@bjdierkes.com> 
+#
+# Author::      BJ Dierkes <derks@bjdierkes.com>
 # Copyright::   Copyright (c) 2006,2012 BJ Dierkes
-# License::     MIT 
+# License::     MIT
 # URL::         https://github.com/derks/ruby-parseconfig
-# 
+#
 
 # This class was written to simplify the parsing of configuration
-# files in the format of "param = value".  Please review the 
+# files in the format of "param = value".  Please review the
 # demo files included with this package.
 #
 # For further information please refer to the './doc' directory
 # as well as the ChangeLog and README files included.
 #
 
-# Note: A group is a set of parameters defined for a subpart of a 
+# Note: A group is a set of parameters defined for a subpart of a
 # config file
 
 class ParseConfig
-  
-  Version = '1.0.2'
+
+  Version = '1.0.3'
 
   attr_accessor :config_file, :params, :groups
 
@@ -32,37 +32,41 @@ class ParseConfig
     @config_file = config_file
     @params = {}
     @groups = []
-  
+
     if(self.config_file)
       self.validate_config()
       self.import_config()
     end
   end
-  
+
   # Validate the config file, and contents
-  def validate_config()  
+  def validate_config()
     unless File.readable?(self.config_file)
-      raise Errno::EACCES, "#{self.config_file} is not readable" 
+      raise Errno::EACCES, "#{self.config_file} is not readable"
     end
-    
+
     # FIX ME: need to validate contents/structure?
-  end  
-  
+  end
+
   # Import data from the config to our config object.
   def import_config()
     # The config is top down.. anything after a [group] gets added as part
-    # of that group until a new [group] is found.  
+    # of that group until a new [group] is found.
     group = nil
     open(self.config_file) { |f| f.each_with_index do |line, i|
       line.strip!
 
-      if i.eql? 0 and line.include?("\xef\xbb\xbf".force_encoding("UTF-8"))
-        line.delete!("\xef\xbb\xbf".force_encoding("UTF-8"))
+      # force_encoding not available in all versions of ruby
+      begin
+        if i.eql? 0 and line.include?("\xef\xbb\xbf".force_encoding("UTF-8"))
+          line.delete!("\xef\xbb\xbf".force_encoding("UTF-8"))
+        end
+      rescue NoMethodError
       end
 
       unless (/^\#/.match(line))
         if(/\s*=\s*/.match(line))
-          param, value = line.split(/\s*=\s*/, 2)  
+          param, value = line.split(/\s*=\s*/, 2)
           var_name = "#{param}".chomp.strip
           value = value.chomp.strip
           new_value = ''
@@ -74,26 +78,26 @@ class ParseConfig
             end
           else
             new_value = ''
-          end 
+          end
 
           if group
             self.add_to_group(group, var_name, new_value)
           else
             self.add(var_name, new_value)
           end
-          
+
         elsif(/^\[(.+)\]$/.match(line).to_a != [])
           group = /^\[(.+)\]$/.match(line).to_a[1]
           self.add(group, {})
-          
+
         end
       end
     end }
   end
 
   # This method will provide the value held by the object "@param"
-  # where "@param" is actually the name of the param in the config 
-  # file.  
+  # where "@param" is actually the name of the param in the config
+  # file.
   #
   # DEPRECATED - will be removed in future versions
   #
@@ -112,7 +116,7 @@ class ParseConfig
   def get_params()
     return self.params.keys
   end
-  
+
   # List available sub-groups of the config.
   def get_groups()
     return self.groups
@@ -152,7 +156,7 @@ class ParseConfig
 
   # Writes out the config file to output_stream
   def write(output_stream=STDOUT)
-    self.params.each do |name,value| 
+    self.params.each do |name,value|
       if value.class.to_s != 'Hash'
         if value.scan(/\w+/).length > 1
           output_stream.puts "#{name} = \"#{value}\""
@@ -162,10 +166,10 @@ class ParseConfig
       end
     end
     output_stream.puts "\n"
-    
+
     self.groups.each do |group|
       output_stream.puts "[#{group}]"
-      self.params[group].each do |param, value| 
+      self.params[group].each do |param, value|
         if value.scan(/\w+/).length > 1
           output_stream.puts "#{param} = \"#{value}\""
         else
