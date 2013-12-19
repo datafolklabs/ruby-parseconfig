@@ -1,4 +1,4 @@
-Development - v1.0.3
+Thu Dec 19, 2013 - v1.0.4
 - Add fix for config files with Byte Order Marker (BOM)
 - Add support for .eql? function.
 

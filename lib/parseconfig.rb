@@ -1,8 +1,8 @@
 #
-# Author::      BJ Dierkes <derks@bjdierkes.com>
-# Copyright::   Copyright (c) 2006,2012 BJ Dierkes
+# Author::      BJ Dierkes <derks@datafolklabs.com>
+# Copyright::   Copyright (c) 2006,2013 BJ Dierkes
 # License::     MIT
-# URL::         https://github.com/derks/ruby-parseconfig
+# URL::         https://github.com/datafolklabs/ruby-parseconfig
 #
 
 # This class was written to simplify the parsing of configuration
@@ -18,7 +18,7 @@
 
 class ParseConfig
 
-  Version = '1.0.3'
+  Version = '1.0.4'
 
   attr_accessor :config_file, :params, :groups
 
