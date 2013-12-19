@@ -170,4 +170,16 @@ class ParseConfig
       output_stream.puts "\n"
     end
   end
+
+  # Public: Compare this ParseConfig to some other ParseConfig. For two config to
+  # be equivalent, they must have the same sections with the same parameters
+  #
+  # other - The other ParseConfig.
+  #
+  # Returns true if ParseConfig are equivalent and false if they differ.
+
+  def eql?(other)
+    self.params == other.params && self.groups == other.groups
+  end
+  alias == eql?
 end
