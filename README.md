@@ -11,6 +11,10 @@ Installation
 
     $ sudo gem install parseconfig
 
+Gemfile
+
+     gem 'parseconfig'
+
 Usage
 -----
 
@@ -31,49 +35,51 @@ An example configuration file might look like:
 
 Access it with ParseConfig:
 
-    >> require('parseconfig.rb')
-    => true
+```ruby
 
-    >> config = ParseConfig.new('/path/to/config/file')
-    => #<ParseConfig:0x102410908
-            @config_file="example.conf",
-            @groups=["group1", "group2"],
-            @params={
+>> require 'parseconfig'
+=> true
+
+>> config = ParseConfig.new('/path/to/config/example.conf')
+=> #<ParseConfig:0x102410908
+      @config_file="example.conf",
+      @groups=["group1", "group2"],
+      @params={
+            "param1"=>"value1"
+            "param2"=>"value2",
+            "group1"=>{
                 "param1"=>"value1"
                 "param2"=>"value2",
-                "group1"=>{
-                    "param1"=>"value1"
-                    "param2"=>"value2",
-                    },
-                "group2"=>{
-                    "param1"=>"value1"
-                    "param2"=>"value2",
-                    },
-                }
-            >
+            },
+            "group2"=>{
+                "param1"=>"value1"
+                "param2"=>"value2",
+            },
+    }>
 
-    >> config.get_params()
-    => ["param1", "param2", "group1", "group2"]
+>> config.get_params
+=> ["param1", "param2", "group1", "group2"]
 
-    >> config['param1']
-    => "value1"
+>> config['param1']
+=> "value1"
 
-    >> config.get_groups()
-    => ["group1", "group2"]
+>> config.get_groups
+=> ["group1", "group2"]
 
-    >> config['group1']
-    => {"group1_param1"=>"group1_value1", "group1_param2"=>"group1_value2"}
+>> config['group1']
+=> {"group1_param1"=>"group1_value1", "group1_param2"=>"group1_value2"}
 
-    >> config['group1']['group1_param1']
-    => "group1_value1"
+>> config['group1']['group1_param1']
+=> "group1_value1"
 
-    >> file = File.open('/path/to/config/file', 'w')
-    => #<File:file>
-    >> config.write(file)
-    => []
-    >> file.close
-    => nil
+>> file = File.open('/path/to/config/file', 'w')
+=> #<File:file>
+>> config.write(file)
+=> []
+>> file.close
+=> nil
 
+```
 
 License
 -------
