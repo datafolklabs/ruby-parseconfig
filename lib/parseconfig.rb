@@ -155,10 +155,10 @@ class ParseConfig
   end
 
   # Writes out the config file to output_stream
-  def write(output_stream=STDOUT)
+  def write(output_stream=STDOUT, quoted=true)
     self.params.each do |name,value|
       if value.class.to_s != 'Hash'
-        if value.scan(/\w+/).length > 1
+        if quoted == true
           output_stream.puts "#{name} = \"#{value}\""
         else
           output_stream.puts "#{name} = #{value}"
@@ -170,7 +170,7 @@ class ParseConfig
     self.groups.each do |group|
       output_stream.puts "[#{group}]"
       self.params[group].each do |param, value|
-        if value.scan(/\w+/).length > 1
+        if quoted == true
           output_stream.puts "#{param} = \"#{value}\""
         else
           output_stream.puts "#{param} = #{value}"
