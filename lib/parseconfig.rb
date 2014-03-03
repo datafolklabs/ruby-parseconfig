@@ -18,7 +18,7 @@
 
 class ParseConfig
 
-  Version = '1.0.4'
+  Version = '1.0.5'
 
   attr_accessor :config_file, :params, :groups
 

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = %q{parseconfig}
-  s.version = "1.0.4"
-  s.date = %q{2013-12-19}
+  s.version = "1.0.5"
+  s.date = %q{2014-03-03}
   s.authors = ["BJ Dierkes"]
   s.email = %q{derks@datafolklabs.com}
   s.summary = %q{Config File Parser for Standard Unix/Linux Type Config Files}
