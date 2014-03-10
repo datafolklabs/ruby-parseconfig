@@ -1,8 +1,8 @@
 $result = {
-  "group1" => {
-    "foo" => "bar"
+  :group1 => {
+    :foo => "bar"
   },
-  "group2" => {
-    "baz" => "quux"
+  :group2 => {
+    :baz => "quux"
   }
 }

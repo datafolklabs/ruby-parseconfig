@@ -81,14 +81,14 @@ class ParseConfig
           end
 
           if group
-            self.add_to_group(group, var_name, new_value)
+            self.add_to_group(group.to_sym, var_name.to_sym, new_value)
           else
-            self.add(var_name, new_value)
+            self.add(var_name.to_sym, new_value)
           end
 
         elsif(/^\[(.+)\]$/.match(line).to_a != [])
           group = /^\[(.+)\]$/.match(line).to_a[1]
-          self.add(group, {})
+          self.add(group.to_sym, {})
 
         end
       end
