@@ -104,12 +104,12 @@ class ParseConfig
   def get_value(param)
     puts "ParseConfig Deprecation Warning: get_value() is deprecated. Use " + \
          "config['param'] or config['group']['param'] instead."
-    return self.params[param]
+    return self.params[param.to_sym]
   end
 
   # This method is a shortcut to accessing the @params variable
   def [](param)
-    return self.params[param]
+    return self.params[param.to_sym]
   end
 
   # This method returns all parameters/groups defined in a config file.
@@ -125,7 +125,9 @@ class ParseConfig
   # This method adds an element to the config object (not the config file)
   # By adding a Hash, you create a new group
   def add(param_name, value)
+    param_name = param_name.to_sym
     if value.class == Hash
+     value = symbolize_nested_hash_keys value
       if self.params.has_key?(param_name)
         if self.params[param_name].class == Hash
           self.params[param_name].merge!(value)
@@ -144,13 +146,22 @@ class ParseConfig
       self.params[param_name] = value
     end
   end
-
+  
+  def symbolize_nested_hash_keys param
+    modify_hash_key = lambda do |hash|
+      return Hash[hash.map {|k,v| [k.to_sym,((v.is_a? Hash) ? modify_hash_key.call(v) : v)]}]
+    end
+    modify_hash_key.call(param)
+  end
   # Add parameters to a group. Note that parameters with the same name
   # could be placed in different groups
   def add_to_group(group, param_name, value)
+    group = group.to_sym
+    param_name = param_name.to_sym
     if ! self.groups.include?(group)
       self.add(group, {})
     end
+    value = symbolize_nested_hash_keys value if value.is_a? Hash
     self.params[group][param_name] = value
   end
 
