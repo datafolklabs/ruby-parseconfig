@@ -14,7 +14,9 @@ describe 'ruby-parseconfig' do
       c.params.should == $result
 
       # Test individual accessors
-      c.groups.sort.should == $result.keys.select{|k| $result[k].is_a? Hash}.sort
+      groups = c.groups
+      result_groups = $result.keys.select{|k| $result[k].is_a? Hash}
+      groups.should == (groups + result_groups).uniq
       c.config_file.should == config_file
 
       $result.keys.each do |k|
