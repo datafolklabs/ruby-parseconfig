@@ -1,3 +1,7 @@
+Mon Oct 06, 2014 - v1.0.6
+- Fix where extraneous double quotes were getting wrapped around parameters
+  that have non-word characters (issue #19)
+
 Thu Dec 19, 2013 - v1.0.4
 - Add fix for config files with Byte Order Marker (BOM)
 - Add support for .eql? function.
