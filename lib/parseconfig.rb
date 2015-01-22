@@ -28,10 +28,11 @@ class ParseConfig
   # the config file is 'param = value' then the itializer
   # will eval "@param = value"
   #
-  def initialize(config_file=nil)
+  def initialize(config_file=nil, separator = '=')
     @config_file = config_file
     @params = {}
     @groups = []
+    @splitRegex = '\s*' + separator + '\s*'
 
     if(self.config_file)
       self.validate_config()
@@ -65,8 +66,8 @@ class ParseConfig
       end
 
       unless (/^\#/.match(line))
-        if(/\s*=\s*/.match(line))
-          param, value = line.split(/\s*=\s*/, 2)
+        if(/#{@splitRegex}/.match(line))
+          param, value = line.split(/#{@splitRegex}/, 2)
           var_name = "#{param}".chomp.strip
           value = value.chomp.strip
           new_value = ''
