@@ -56,7 +56,6 @@ class ParseConfig
     group = nil
     open(self.config_file) { |f| f.each_with_index do |line, i|
       line.strip!
-
       # force_encoding not available in all versions of ruby
       begin
         if i.eql? 0 and line.include?("\xef\xbb\xbf".force_encoding("UTF-8"))
@@ -90,8 +89,14 @@ class ParseConfig
         elsif(/^\[(.+)\]$/.match(line).to_a != [])
           group = /^\[(.+)\]$/.match(line).to_a[1]
           self.add(group, {})
-
+        elsif !line.empty?
+          if group
+            self.add_to_group(group, line, '')
+          else
+            self.add(line,'')
+          end
         end
+
       end
     end }
   end
