@@ -125,11 +125,15 @@ class ParseConfig
 
   # This method adds an element to the config object (not the config file)
   # By adding a Hash, you create a new group
-  def add(param_name, value)
+  def add(param_name, value, override = false)
     if value.class == Hash
       if self.params.has_key?(param_name)
         if self.params[param_name].class == Hash
-          self.params[param_name].merge!(value)
+          if override
+            self.params[param_name] = value
+          else
+            self.params[param_name].merge!(value)
+          end
         elsif self.params.has_key?(param_name)
           if self.params[param_name].class != value.class
             raise ArgumentError, "#{param_name} already exists, and is of different type!"
