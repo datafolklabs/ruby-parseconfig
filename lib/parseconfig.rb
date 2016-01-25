@@ -1,6 +1,6 @@
 #
 # Author::      BJ Dierkes <derks@datafolklabs.com>
-# Copyright::   Copyright (c) 2006,2013 BJ Dierkes
+# Copyright::   Copyright (c) 2006,2016 Data Folk Labs, LLC
 # License::     MIT
 # URL::         https://github.com/datafolklabs/ruby-parseconfig
 #
@@ -18,7 +18,7 @@
 
 class ParseConfig
 
-  Version = '1.0.6'
+  Version = '1.0.7'
 
   attr_accessor :config_file, :params, :groups
 
@@ -28,11 +28,12 @@ class ParseConfig
   # the config file is 'param = value' then the itializer
   # will eval "@param = value"
   #
-  def initialize(config_file=nil, separator = '=')
+  def initialize(config_file=nil, separator='=', comments: ['#', ';'])
     @config_file = config_file
     @params = {}
     @groups = []
     @splitRegex = '\s*' + separator + '\s*'
+    @comments = comments
 
     if(self.config_file)
       self.validate_config()
@@ -65,7 +66,15 @@ class ParseConfig
       rescue NoMethodError
       end
 
-      unless (/^\#/.match(line))
+      is_comment = false
+      @comments.each do |comment|
+        if (/^#{comment}/.match(line))
+          is_comment = true
+          break
+        end
+      end
+
+      unless is_comment
         if(/#{@splitRegex}/.match(line))
           param, value = line.split(/#{@splitRegex}/, 2)
           var_name = "#{param}".chomp.strip

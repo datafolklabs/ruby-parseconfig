@@ -1,3 +1,7 @@
+Mon Jan 25, 2016 - v1.0.7
+- Support alternative comment types (default: ['#', ';']) (@voobscout)
+  Resolves Issue #30
+
 Mon Oct 06, 2014 - v1.0.6
 - Fix where extraneous double quotes were getting wrapped around parameters
   that have non-word characters (issue #19)

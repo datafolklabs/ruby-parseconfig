@@ -1,5 +1,4 @@
-Ruby ParseConfig Library
-========================
+# Ruby ParseConfig Library
 
 ParseConfig provides simple parsing of standard configuration files in the
 form of 'param = value'.  It also supports nested [group] sections.
@@ -9,34 +8,37 @@ form of 'param = value'.  It also supports nested [group] sections.
 Installation
 ------------
 
-    $ sudo gem install parseconfig
+```
+$ sudo gem install parseconfig
+```
 
 Gemfile
 
-     gem 'parseconfig'
+```
+gem 'parseconfig'
+```
 
-Usage
------
+## Usage
 
 An example configuration file might look like:
 
-    # Example Config
-    param1 = value1
-    param2 = value2
+```
+# Example Config
+param1 = value1
+param2 = value2
 
-    [group1]
-    group1_param1 = group1_value1
-    group1_param2 = group1_value2
+[group1]
+group1_param1 = group1_value1
+group1_param2 = group1_value2
 
-    [group2]
-    group2_param1 = group2_value1
-    group2_param2 = group2_value2
+[group2]
+group2_param1 = group2_value1
+group2_param2 = group2_value2
 
 
 Access it with ParseConfig:
 
 ```ruby
-
 >> require 'parseconfig'
 => true
 
@@ -81,8 +83,7 @@ Access it with ParseConfig:
 
 ```
 
-License
--------
+## License
 
 The ParseConfig library is Open Source and distributed under the MIT license.
 Please see the LICENSE file included with this software.
