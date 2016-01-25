@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{parseconfig}
-  s.version = "1.0.6"
+  s.version = "1.0.7"
   s.date = %q{2014-10-06}
   s.authors = ["BJ Dierkes"]
   s.email = %q{derks@datafolklabs.com}

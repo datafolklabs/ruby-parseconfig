@@ -65,7 +65,7 @@ class ParseConfig
       rescue NoMethodError
       end
 
-      unless (/^\#/.match(line))
+      unless (/^(\#|;)/.match(line))
         if(/#{@splitRegex}/.match(line))
           param, value = line.split(/#{@splitRegex}/, 2)
           var_name = "#{param}".chomp.strip
