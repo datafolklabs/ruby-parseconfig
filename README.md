@@ -34,7 +34,7 @@ group1_param2 = group1_value2
 [group2]
 group2_param1 = group2_value1
 group2_param2 = group2_value2
-
+```
 
 Access it with ParseConfig:
 
