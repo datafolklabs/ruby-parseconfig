@@ -18,7 +18,7 @@
 
 class ParseConfig
 
-  Version = '1.0.7'
+  Version = '1.0.8'
 
   attr_accessor :config_file, :params, :groups
 
@@ -28,7 +28,7 @@ class ParseConfig
   # the config file is 'param = value' then the itializer
   # will eval "@param = value"
   #
-  def initialize(config_file=nil, separator='=', comments: ['#', ';'])
+  def initialize(config_file=nil, separator='=', comments=['#', ';'])
     @config_file = config_file
     @params = {}
     @groups = []

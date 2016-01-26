@@ -1,3 +1,7 @@
+Mon Jan 25, 2016 - v1.0.8
+- Use backward compatible positional arguments (not named keyword arguments)
+  Resolves Issue #31
+
 Mon Jan 25, 2016 - v1.0.7
 - Support alternative comment types (default: ['#', ';']) (@voobscout)
   Resolves Issue #30
