@@ -179,7 +179,6 @@ class ParseConfig
         end
       end
     end
-    output_stream.puts "\n"
 
     self.groups.each do |group|
       output_stream.puts "[#{group}]"
@@ -190,7 +189,6 @@ class ParseConfig
           output_stream.puts "#{param} = #{value}"
         end
       end
-      output_stream.puts "\n"
     end
   end
 
