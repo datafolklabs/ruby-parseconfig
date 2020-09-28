@@ -1,3 +1,7 @@
+Mon Sep 28, 2020 - v1.0.9
+- Add non-value option support.
+  Resolves Issue #11
+
 Mon Jan 25, 2016 - v1.0.8
 - Use backward compatible positional arguments (not named keyword arguments)
   Resolves Issue #31
