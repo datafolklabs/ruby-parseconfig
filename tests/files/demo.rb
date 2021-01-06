@@ -9,5 +9,6 @@ $result = {
     "group2" => {
         "user_name" => "rita",
         "group_name" => "daemons"
-    }
+    },
+    "no_value_option" => true
 }
