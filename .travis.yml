@@ -2,10 +2,8 @@ language: ruby
 script: ./utils/run-tests.sh
 install: gem install rspec
 rvm:
-  - 1.8
   - 1.9
   - 2.0
   - 2.1
   - 2.2
   - ruby-head
-  - ree
