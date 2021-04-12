@@ -93,8 +93,8 @@ class ParseConfig
             else
               add(var_name, new_value)
             end
-          elsif /^\[(.+)\]$/.match(line).to_a != []
-            group = /^\[(.+)\]$/.match(line).to_a[1]
+          elsif /^\[(.+)\](\s*#{escaped_comment_regex}+.*)?$/.match(line).to_a != []
+            group = /^\[(.+)\](\s*#{escaped_comment_regex}+.*)?$/.match(line).to_a[1]
             add(group, {})
           elsif /\w+/.match(line)
             add(line.to_s.chomp.strip, true)
@@ -102,6 +102,10 @@ class ParseConfig
         end
       end
     end
+  end
+
+  def escaped_comment_regex
+    /[#{Regexp.escape(@comments.join(''))}]/
   end
 
   # This method will provide the value held by the object "@param"
