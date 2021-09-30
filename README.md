@@ -3,7 +3,7 @@
 ParseConfig provides simple parsing of standard configuration files in the
 form of `param = value`.  It also supports nested `[group]` sections.
 
-[![Continuous Integration Status](https://secure.travis-ci.org/datafolklabs/ruby-parseconfig.png)](http://travis-ci.org/datafolklabs/ruby-parseconfig)
+[![Continuous Integration Status](https://app.travis-ci.com/datafolklabs/ruby-parseconfig.svg?branch=master)](https://app.travis-ci.com/github/datafolklabs/ruby-parseconfig)
 
 ## Installation
 
