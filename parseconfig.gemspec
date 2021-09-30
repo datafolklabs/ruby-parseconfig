@@ -5,6 +5,7 @@ require 'version'
 Gem::Specification.new do |s|
   s.name        = 'parseconfig'
   s.version     = ParseConfig::VERSION
+  s.licenses    = ["MIT"]
   s.date        = '2020-09-28'
   s.authors     = ['BJ Dierkes']
   s.email       = 'derks@datafolklabs.com'
