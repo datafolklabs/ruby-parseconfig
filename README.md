@@ -84,6 +84,53 @@ Access it with ParseConfig:
 
 ```
 
+## Development
+
+### Docker
+
+This project includes a `docker-compose` configuration that sets up all required services, and dependencies for development and testing.  This is the recommended path for local development, and is the only fully supported option.
+
+The following creates all required docker containers, and launches a BASH shell within the `parseconfig` dev container for development.
+```
+$ make dev
+
+|> parseconfig <| src #
+```
+
+The above is the equivalent of running:
+
+```
+$ docker-compose up -d
+
+$ docker-compose exec parseconfig /bin/bash
+```
+
+**Testing Alternative Versions of Ruby**
+
+The latest stable version of Ruby is the default, and target version accessible as the `parseconfig` container within Docker Compose.  For testing against alternative versions of Ruby, additional containers are created (ex: `parseconfig-rb26`, `parseconfig-rb27`, etc). You can access these containers via:
+
+```
+$ docker-compose ps
+               Name                    Command    State   Ports
+---------------------------------------------------------------
+ruby-parseconfig_parseconfig-rb26_1   /bin/bash   Up
+ruby-parseconfig_parseconfig-rb27_1   /bin/bash   Up
+ruby-parseconfig_parseconfig-rb30_1   /bin/bash   Up
+ruby-parseconfig_parseconfig_1        /bin/bash   Up
+
+
+$ docker-compose exec parseconfig-rb26 /bin/bash
+
+|> parseconfig-rb26 <| src #
+```
+
+### Running Unit Tests
+
+```
+$ make test
+```
+
+
 ## License
 
 The ParseConfig library is Open Source and distributed under the MIT license.

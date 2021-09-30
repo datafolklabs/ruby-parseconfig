@@ -1,0 +1,16 @@
+FROM ruby:2.6-alpine
+LABEL MAINTAINER="BJ Dierkes <derks@datafolklabs.com>"
+ENV PS1="\[\e[0;33m\]|> parseconfig-rb26 <| \[\e[1;35m\]\W\[\e[0m\] \[\e[0m\]# "
+
+WORKDIR /src
+RUN apk update \
+    && apk add \
+        musl-dev \
+        make \
+        vim \
+        bash \
+    && ln -sf /usr/bin/vim /usr/bin/vi \
+    && gem install rspec
+COPY . /src
+COPY docker/vimrc /root/.vimrc
+CMD ["/bin/bash"]

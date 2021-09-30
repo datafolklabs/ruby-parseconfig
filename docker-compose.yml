@@ -1,0 +1,35 @@
+version: "3"
+services:
+    parseconfig: &DEFAULTS
+        image: "parseconfig:dev"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.dev
+        hostname: parseconfig
+        privileged: true
+        stdin_open: true
+        tty: true
+        volumes:
+            - '.:/src'
+        working_dir: '/src'
+
+    parseconfig-rb30:
+        <<: *DEFAULTS
+        image: "parseconfig:dev-rb30"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.dev-rb30
+    
+    parseconfig-rb27:
+        <<: *DEFAULTS
+        image: "parseconfig:dev-rb27"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.dev-rb27
+    
+    parseconfig-rb26:
+        <<: *DEFAULTS
+        image: "parseconfig:dev-rb26"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.dev-rb26
