@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = 'parseconfig'
   s.version     = ParseConfig::VERSION
   s.licenses    = ["MIT"]
-  s.date        = '2020-09-28'
-  s.authors     = ['BJ Dierkes']
-  s.email       = 'derks@datafolklabs.com'
+  s.date        = '2021-09-30'
+  s.authors     = ['BJ Dierkes', 'Dmitry Shagin']
+  s.email       = 'team@datafolklabs.com'
   s.summary     = 'Config File Parser for Standard Unix/Linux Type Config Files'
   s.homepage    = 'http://github.com/datafolklabs/ruby-parseconfig/'
   s.description = 'ParseConfig provides simple parsing of standard' \
