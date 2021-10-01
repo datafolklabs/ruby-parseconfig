@@ -1,5 +1,5 @@
 
-Wed Sep 29, 2021 - v1.1.1 (DEVELOPMENT - will be released as 1.1.2)
+Wed Sep 29, 2021 - v1.1.2
 - Dev and test against recent versions of Ruby (2.6+, 3.0+)
 - Docker development support
 - Remove tests for deprecated 'get_value()' method
